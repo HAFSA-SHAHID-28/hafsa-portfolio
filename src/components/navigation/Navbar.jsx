@@ -59,6 +59,35 @@ const Navbar = () => {
   }, [location.pathname, location.hash]);
 
   // ----------------------------------------
+  // Scroll to hash target
+  // ----------------------------------------
+
+  const scrollToHashTarget = (hash) => {
+    if (!hash) return;
+
+    const id = hash.replace("#", "");
+    const target = document.getElementById(id);
+
+    if (!target) return;
+
+    const navbar = document.querySelector("header");
+    const navbarHeight = navbar?.getBoundingClientRect().height ?? 0;
+
+    const extraOffset = 16;
+
+    const targetPosition =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      navbarHeight -
+      extraOffset;
+
+    window.scrollTo({
+      top: Math.max(0, targetPosition),
+      behavior: "smooth",
+    });
+  };
+
+  // ----------------------------------------
   // Scroll to hash target after navigation
   // ----------------------------------------
 
@@ -72,20 +101,9 @@ const Navbar = () => {
       return;
     }
 
-    const id = location.hash.replace("#", "");
-
-    const scrollToTarget = () => {
-      const target = document.getElementById(id);
-
-      if (!target) return;
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    };
-
-    const timeout = window.setTimeout(scrollToTarget, 50);
+    const timeout = window.setTimeout(() => {
+      scrollToHashTarget(location.hash);
+    }, 50);
 
     return () => {
       window.clearTimeout(timeout);
@@ -127,7 +145,10 @@ const Navbar = () => {
       return false;
     }
 
-    return location.pathname === "/" && location.hash === to.replace("/", "");
+    return (
+      location.pathname === "/" &&
+      location.hash === to.replace("/", "")
+    );
   };
 
   // ----------------------------------------
@@ -135,6 +156,29 @@ const Navbar = () => {
   // ----------------------------------------
 
   const handleNavClick = (to) => {
+    const isHashNavigation = to.startsWith("/#");
+
+    if (!isHashNavigation) {
+      navigate(to);
+      return;
+    }
+
+    const targetHash = to.replace("/", "");
+
+    // If URL is already on the same hash, navigate()
+    // will not produce a pathname/hash change.
+    // Therefore scroll directly.
+    const isSameHash =
+      location.pathname === "/" &&
+      location.hash === targetHash;
+
+    if (isSameHash) {
+      scrollToHashTarget(targetHash);
+      return;
+    }
+
+    // For normal navigation, update the URL.
+    // The hash effect above handles the actual scrolling.
     navigate(to);
   };
 
@@ -259,17 +303,17 @@ const Navbar = () => {
 
             <span
               className="
-                   hidden
-    font-display
-    text-base
-    sm:text-[20px]
-    font-semibold
+                hidden
+                font-display
+                text-base
+                font-semibold
                 tracking-[-0.025em]
                 text-text
                 transition-colors
                 duration-fast
                 group-hover:text-accent-hover
                 sm:block
+                sm:text-[20px]
               "
             >
               Hafsa Shahid
@@ -331,11 +375,11 @@ const Navbar = () => {
                     }
                   `}
                 >
-                  <span className="relative z-10">{item.label}</span>
+                  <span className="relative z-10">
+                    {item.label}
+                  </span>
 
-                  {/* -----------------------------------------
-                      Active underline
-                  ----------------------------------------- */}
+                  {/* Active underline */}
 
                   {active && (
                     <motion.span
@@ -363,10 +407,8 @@ const Navbar = () => {
                     />
                   )}
 
-                  {/* -----------------------------------------
-                      Hover underline
-                      Only rendered for inactive tabs
-                  ----------------------------------------- */}
+                  {/* Hover underline
+                      Only rendered for inactive tabs */}
 
                   {!active && (
                     <motion.span
@@ -394,10 +436,8 @@ const Navbar = () => {
                     />
                   )}
 
-                  {/* -----------------------------------------
-                      Hover border
-                      Only rendered for inactive tabs
-                  ----------------------------------------- */}
+                  {/* Hover border
+                      Only rendered for inactive tabs */}
 
                   {!active && (
                     <motion.span
@@ -463,7 +503,9 @@ const Navbar = () => {
                 focus-visible:outline-offset-4
               "
             >
-              <span className="relative z-10">Let's Talk</span>
+              <span className="relative z-10">
+                Let's Talk
+              </span>
 
               <ArrowUpRight
                 size={14}
@@ -478,8 +520,6 @@ const Navbar = () => {
                   group-hover:-translate-y-0.5
                 "
               />
-
-              {/* Hover sweep */}
 
               <span
                 aria-hidden="true"
@@ -505,10 +545,14 @@ const Navbar = () => {
           <button
             type="button"
             aria-label={
-              isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+              isMenuOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
             }
             aria-expanded={isMenuOpen}
-            onClick={() => setIsMenuOpen((current) => !current)}
+            onClick={() =>
+              setIsMenuOpen((current) => !current)
+            }
             className="
               relative
               z-10
@@ -788,7 +832,9 @@ const Navbar = () => {
                     focus-visible:outline-offset-4
                   "
                 >
-                  <span className="relative z-10">Let's Talk</span>
+                  <span className="relative z-10">
+                    Let's Talk
+                  </span>
 
                   <ArrowUpRight
                     size={14}
