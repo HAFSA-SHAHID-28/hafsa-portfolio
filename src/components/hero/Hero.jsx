@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import Container from "../layout/Container";
 import Button from "../ui/Button";
 
-const Hero = () => {
+const Hero = ({ isLoaded = false }) => {
   const heroRef = useRef(null);
 
   const mouseX = useMotionValue(0);
@@ -64,11 +64,8 @@ const Hero = () => {
 
     if (!rect) return;
 
-    const x =
-      (event.clientX - rect.left) / rect.width - 0.5;
-
-    const y =
-      (event.clientY - rect.top) / rect.height - 0.5;
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
 
     mouseX.set(x * 22);
     mouseY.set(y * 18);
@@ -373,19 +370,8 @@ const Hero = () => {
             x: smoothX,
             y: smoothY,
           }}
-          animate={{
-            backgroundPosition: [
-              "0px 0px",
-              "64px 64px",
-            ],
-          }}
-          transition={{
-            duration: 16,
-            repeat: Infinity,
-            ease: "linear",
-          }}
         >
-          <div
+          <motion.div
             className="
               h-full
               w-full
@@ -393,6 +379,14 @@ const Hero = () => {
               [background-size:64px_64px]
               [mask-image:radial-gradient(ellipse_at_center,black_5%,transparent_70%)]
             "
+            animate={{
+              backgroundPosition: ["0px 0px", "64px 64px"],
+            }}
+            transition={{
+              duration: 16,
+              repeat: Infinity,
+              ease: "linear",
+            }}
           />
         </motion.div>
 
@@ -625,388 +619,409 @@ const Hero = () => {
           HERO CONTENT
       ========================================================== */}
 
-
-<Container className="relative z-10">
-  <div className="max-w-4xl">
-
-    {/* Eyebrow */}
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: 14,
-        filter: "blur(6px)",
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-      }}
-      transition={{
-        duration: 0.7,
-        delay: 0.12,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="
-        mb-5
-        flex
-        items-center
-        gap-3
-        text-[11px]
-        font-semibold
-        uppercase
-        tracking-[0.18em]
-        text-text-muted
-        sm:mb-6
-        sm:text-xs
-      "
-    >
-      <motion.span
-        aria-hidden="true"
-        initial={{
-          width: 0,
-          opacity: 0,
-        }}
-        animate={{
-          width: 40,
-          opacity: 1,
-        }}
-        transition={{
-          duration: 0.65,
-          delay: 0.22,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-        className="
-          h-px
-          bg-accent
-        "
-      />
-
-      <span>
-        Frontend-focused MERN Stack Developer
-      </span>
-    </motion.div>
-
-    {/* Heading */}
-    <motion.h1
-      initial={{
-        opacity: 0,
-        y: 34,
-        filter: "blur(10px)",
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-      }}
-      transition={{
-        duration: 1,
-        delay: 0.24,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="
-        max-w-4xl
-        font-display
-        text-[clamp(2.8rem,5.8vw,5.5rem)]
-        font-bold
-        leading-[0.94]
-        tracking-[-0.06em]
-        text-text
-      "
-    >
-      Building interfaces
-      <br />
-
-      <motion.span
-        initial={{
-          opacity: 0,
-          y: 18,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 0.8,
-          delay: 0.48,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-        className="
-          inline-block
-          text-text-secondary
-        "
-      >
-        that do more.
-      </motion.span>
-    </motion.h1>
-
-    {/* Paragraph */}
-    <motion.p
-      initial={{
-        opacity: 0,
-        y: 20,
-        filter: "blur(6px)",
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-      }}
-      transition={{
-        duration: 0.8,
-        delay: 0.62,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="
-        mt-6
-        max-w-xl
-        text-sm
-        leading-6
-        text-text-secondary
-        sm:mt-7
-        sm:text-base
-        sm:leading-7
-      "
-    >
-      I build responsive web applications with
-      thoughtful interfaces, practical functionality,
-      and growing full-stack capability across the
-      MERN stack.
-    </motion.p>
-
-    {/* CTA */}
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: 20,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
-      transition={{
-        duration: 0.75,
-        delay: 0.78,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="
-        mt-8
-        flex
-        flex-col
-        items-start
-        gap-3
-        sm:flex-row
-        sm:items-center
-        sm:gap-4
-      "
-    >
-      <Button
-        href="/#projects"
-        size="lg"
-        showArrow
-      >
-        View selected work
-      </Button>
-
-      <Button
-        href="/#contact"
-        variant="ghost"
-        size="lg"
-        showArrow={false}
-        className="group"
-      >
-        <span className="inline-flex items-center gap-2">
-          Let's talk
-
-          <ArrowUpRight
-            size={16}
-            strokeWidth={2}
-            className="
-              transition-transform
-              duration-normal
-              ease-out-expo
-              group-hover:translate-x-0.5
-              group-hover:-translate-y-0.5
-            "
-          />
-        </span>
-      </Button>
-    </motion.div>
-
-    {/* Social Links */}
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: 18,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
-      transition={{
-        duration: 0.7,
-        delay: 0.94,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="
-        mt-9
-        flex
-        items-center
-        gap-3
-        sm:mt-10
-      "
-    >
-      {socialLinks.map((social, index) => (
-        <motion.a
-          key={social.label}
-          href={social.href}
-          target={
-            social.href.startsWith("mailto:")
-              ? undefined
-              : "_blank"
-          }
-          rel={
-            social.href.startsWith("mailto:")
-              ? undefined
-              : "noopener noreferrer"
-          }
-          initial={{
-            opacity: 0,
-            y: 12,
-            scale: 0.92,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          }}
-          transition={{
-            duration: 0.5,
-            delay: 1.02 + index * 0.08,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-          whileHover={{
-            y: -4,
-            scale: 1.04,
-          }}
-          whileTap={{
-            scale: 0.94,
-          }}
-          className="
-            group
-            relative
-            inline-flex
-            h-10
-            items-center
-            gap-2.5
-            overflow-hidden
-            rounded-md
-            border
-            border-border
-            bg-surface/50
-            px-3.5
-            text-xs
-            font-medium
-            text-text-muted
-            backdrop-blur-sm
-            transition-colors
-            duration-normal
-            hover:border-border-hover
-            hover:bg-surface-hover
-            hover:text-text
-            focus-visible:outline-2
-            focus-visible:outline-accent
-            focus-visible:outline-offset-4
-          "
-        >
-          {/* Hover glow */}
-          <motion.span
-            aria-hidden="true"
-            className="
-              pointer-events-none
-              absolute
-              inset-0
-              bg-accent/[0.07]
-            "
+      <Container className="relative z-10">
+        <div className="max-w-4xl">
+          {/* Eyebrow */}
+          <motion.div
             initial={{
               opacity: 0,
-              scale: 0.8,
+              y: 14,
+              filter: "blur(6px)",
             }}
-            whileHover={{
-              opacity: 1,
-              scale: 1,
-            }}
+            animate={
+              isLoaded
+                ? {
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                  }
+                : {
+                    opacity: 0,
+                    y: 14,
+                    filter: "blur(6px)",
+                  }
+            }
             transition={{
-              duration: 0.25,
+              duration: 0.7,
+              delay: 0.12,
+              ease: [0.16, 1, 0.3, 1],
             }}
-          />
-
-          {/* Icon */}
-          <motion.span
             className="
-              relative
-              z-10
+              mb-5
               flex
               items-center
-              justify-center
+              gap-3
+              text-[11px]
+              font-semibold
+              uppercase
+              tracking-[0.18em]
+              text-text-muted
+              sm:mb-6
+              sm:text-xs
             "
-            whileHover={{
-              rotate: index === 0 ? -6 : index === 1 ? 4 : -4,
-              y: -1,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 18,
-            }}
           >
-            <i
+            <motion.span
               aria-hidden="true"
-              className={`
-                ${social.icon}
-                text-[14px]
-              `}
+              initial={{
+                width: 0,
+                opacity: 0,
+              }}
+              animate={
+                isLoaded
+                  ? {
+                      width: 40,
+                      opacity: 1,
+                    }
+                  : {
+                      width: 0,
+                      opacity: 0,
+                    }
+              }
+              transition={{
+                duration: 0.65,
+                delay: 0.22,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="h-px bg-accent"
             />
-          </motion.span>
 
-          {/* Label */}
-          <span className="relative z-10">
-            {social.label}
-          </span>
+            <span>Frontend-focused MERN Stack Developer</span>
+          </motion.div>
 
-          {/* Arrow */}
-          <motion.span
-            aria-hidden="true"
+          {/* Heading */}
+          <motion.h1
+            initial={{
+              opacity: 0,
+              y: 34,
+              filter: "blur(10px)",
+            }}
+            animate={
+              isLoaded
+                ? {
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                  }
+                : {
+                    opacity: 0,
+                    y: 34,
+                    filter: "blur(10px)",
+                  }
+            }
+            transition={{
+              duration: 1,
+              delay: 0.24,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             className="
-              relative
-              z-10
+              max-w-4xl
+              font-display
+              text-[clamp(2.8rem,5.8vw,5.5rem)]
+              font-bold
+              leading-[0.94]
+              tracking-[-0.06em]
+              text-text
+            "
+          >
+            Building web experiences
+            <br />
+
+            <motion.span
+              initial={{
+                opacity: 0,
+                y: 18,
+              }}
+              animate={
+                isLoaded
+                  ? {
+                      opacity: 1,
+                      y: 0,
+                    }
+                  : {
+                      opacity: 0,
+                      y: 18,
+                    }
+              }
+              transition={{
+                duration: 0.8,
+                delay: 0.48,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="
+                inline-block
+                text-text-secondary
+              "
+            >
+              with purpose and polish.
+            </motion.span>
+          </motion.h1>
+
+          {/* Paragraph */}
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 20,
+              filter: "blur(6px)",
+            }}
+            animate={
+              isLoaded
+                ? {
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                  }
+                : {
+                    opacity: 0,
+                    y: 20,
+                    filter: "blur(6px)",
+                  }
+            }
+            transition={{
+              duration: 0.8,
+              delay: 0.62,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="
+              mt-6
+              max-w-xl
+              text-sm
+              leading-6
+              text-text-secondary
+              sm:mt-7
+              sm:text-base
+              sm:leading-7
+            "
+          >
+            I build responsive web experiences that bring thoughtful design
+            and practical functionality together, from polished frontend
+            applications to full-stack web projects.
+          </motion.p>
+
+          {/* CTA */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={
+              isLoaded
+                ? {
+                    opacity: 1,
+                    y: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 20,
+                  }
+            }
+            transition={{
+              duration: 0.75,
+              delay: 0.78,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="
+              mt-8
+              flex
+              flex-col
+              items-start
+              gap-3
+              sm:flex-row
+              sm:items-center
+              sm:gap-4
+            "
+          >
+            <Button
+              href="/#projects"
+              size="lg"
+              showArrow
+            >
+              View selected work
+            </Button>
+
+            <Button
+              href="/#contact"
+              variant="ghost"
+              size="lg"
+              showArrow={false}
+              className="group"
+            >
+              <span className="inline-flex items-center gap-2">
+                Let's talk
+
+                <ArrowUpRight
+                  size={16}
+                  strokeWidth={2}
+                  className="
+                    transition-transform
+                    duration-normal
+                    ease-out-expo
+                    group-hover:translate-x-0.5
+                    group-hover:-translate-y-0.5
+                  "
+                />
+              </span>
+            </Button>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            animate={
+              isLoaded
+                ? {
+                    opacity: 1,
+                    y: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 18,
+                  }
+            }
+            transition={{
+              duration: 0.7,
+              delay: 0.94,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="
+              mt-9
               flex
               items-center
-              justify-center
-              opacity-0
+              gap-3
+              sm:mt-10
             "
-            initial={{
-              x: -4,
-              y: 3,
-            }}
-            whileHover={{
-              x: 0,
-              y: 0,
-              opacity: 1,
-            }}
-            transition={{
-              duration: 0.22,
-            }}
           >
-            <ArrowUpRight
-              size={12}
-              strokeWidth={2}
-            />
-          </motion.span>
-        </motion.a>
-      ))}
-    </motion.div>
-  </div>
-</Container>
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target={
+                  social.href.startsWith("mailto:")
+                    ? undefined
+                    : "_blank"
+                }
+                rel={
+                  social.href.startsWith("mailto:")
+                    ? undefined
+                    : "noopener noreferrer"
+                }
+                aria-label={social.label}
+                initial={{
+                  opacity: 0,
+                  y: 12,
+                  scale: 0.88,
+                }}
+                animate={
+                  isLoaded
+                    ? {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                      }
+                    : {
+                        opacity: 0,
+                        y: 12,
+                        scale: 0.88,
+                      }
+                }
+                transition={{
+                  duration: 0.5,
+                  delay: 1.02 + index * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                whileHover={{
+                  y: -4,
+                  scale: 1.06,
+                }}
+                whileTap={{
+                  scale: 0.92,
+                }}
+                className="
+                  group
+                  relative
+                  inline-flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  overflow-hidden
+                  rounded-full
+                  border
+                  border-border
+                  bg-surface/55
+                  text-text-muted
+                  backdrop-blur-sm
+                  transition-colors
+                  duration-normal
+                  hover:border-border-hover
+                  hover:bg-surface-hover
+                  hover:text-text
+                  focus-visible:outline-2
+                  focus-visible:outline-accent
+                  focus-visible:outline-offset-4
+                  sm:h-12
+                  sm:w-12
+                "
+              >
+                {/* Hover glow */}
+                <motion.span
+                  aria-hidden="true"
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-0
+                    rounded-full
+                    bg-accent/[0.08]
+                  "
+                  initial={{
+                    opacity: 0,
+                    scale: 0.7,
+                  }}
+                  whileHover={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  transition={{
+                    duration: 0.25,
+                  }}
+                />
+
+                {/* Icon */}
+                <motion.span
+                  className="
+                    relative
+                    z-10
+                    flex
+                    items-center
+                    justify-center
+                  "
+                  whileHover={{
+                    rotate:
+                      index === 0
+                        ? -7
+                        : index === 1
+                        ? 5
+                        : -5,
+                    scale: 1.08,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 18,
+                  }}
+                >
+                  <i
+                    aria-hidden="true"
+                    className={`${social.icon} text-[15px] sm:text-[16px]`}
+                  />
+                </motion.span>
+              </motion.a>
+            ))}
+          </motion.div>
+        </div>
+      </Container>
     </section>
   );
 };

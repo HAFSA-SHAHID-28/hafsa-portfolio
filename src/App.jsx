@@ -19,7 +19,7 @@ function App() {
       <Navbar />
 
       <main>
-        <Hero />
+        <Hero isLoaded={!isLoading} />
       </main>
     </PageShell>
   );
