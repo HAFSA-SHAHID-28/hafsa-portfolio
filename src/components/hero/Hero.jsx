@@ -95,9 +95,7 @@ const Hero = ({ isLoaded = false }) => {
         lg:pt-20
       "
     >
-      {/* =========================================================
-          HERO BACKGROUND
-      ========================================================== */}
+      {/* HERO BACKGROUND */}
 
       <div
         aria-hidden="true"
@@ -369,26 +367,24 @@ const Hero = ({ isLoaded = false }) => {
           style={{
             x: smoothX,
             y: smoothY,
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.06) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+            backgroundPosition: "0 0",
+            maskImage:
+              "radial-gradient(ellipse at center, black 5%, transparent 70%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse at center, black 5%, transparent 70%)",
           }}
-        >
-          <motion.div
-            className="
-              h-full
-              w-full
-              [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)]
-              [background-size:64px_64px]
-              [mask-image:radial-gradient(ellipse_at_center,black_5%,transparent_70%)]
-            "
-            animate={{
-              backgroundPosition: ["0px 0px", "64px 64px"],
-            }}
-            transition={{
-              duration: 16,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        </motion.div>
+          animate={{
+            backgroundPosition: ["0px 0px", "64px 64px"],
+          }}
+          transition={{
+            duration: 16,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
 
         {/* Diagonal structure */}
         <motion.div
@@ -615,9 +611,7 @@ const Hero = ({ isLoaded = false }) => {
         />
       </div>
 
-      {/* =========================================================
-          HERO CONTENT
-      ========================================================== */}
+      {/* HERO CONTENT */}
 
       <Container className="relative z-10">
         <div className="max-w-4xl">
@@ -692,8 +686,8 @@ const Hero = ({ isLoaded = false }) => {
           <motion.h1
             initial={{
               opacity: 0,
-              y: 34,
-              filter: "blur(10px)",
+              y: 28,
+              filter: "blur(8px)",
             }}
             animate={
               isLoaded
@@ -704,22 +698,22 @@ const Hero = ({ isLoaded = false }) => {
                   }
                 : {
                     opacity: 0,
-                    y: 34,
-                    filter: "blur(10px)",
+                    y: 28,
+                    filter: "blur(8px)",
                   }
             }
             transition={{
-              duration: 1,
-              delay: 0.24,
+              duration: 0.85,
+              delay: 0.22,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="
-              max-w-4xl
+              max-w-3xl
               font-display
-              text-[clamp(2.8rem,5.8vw,5.5rem)]
+              text-[clamp(2.7rem,5.2vw,5rem)]
               font-bold
-              leading-[0.94]
-              tracking-[-0.06em]
+              leading-[0.96]
+              tracking-[-0.055em]
               text-text
             "
           >
@@ -729,7 +723,7 @@ const Hero = ({ isLoaded = false }) => {
             <motion.span
               initial={{
                 opacity: 0,
-                y: 18,
+                y: 14,
               }}
               animate={
                 isLoaded
@@ -739,12 +733,12 @@ const Hero = ({ isLoaded = false }) => {
                     }
                   : {
                       opacity: 0,
-                      y: 18,
+                      y: 14,
                     }
               }
               transition={{
-                duration: 0.8,
-                delay: 0.48,
+                duration: 0.7,
+                delay: 0.42,
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="
@@ -752,7 +746,7 @@ const Hero = ({ isLoaded = false }) => {
                 text-text-secondary
               "
             >
-              with purpose and polish.
+              that work beautifully.
             </motion.span>
           </motion.h1>
 
@@ -760,8 +754,8 @@ const Hero = ({ isLoaded = false }) => {
           <motion.p
             initial={{
               opacity: 0,
-              y: 20,
-              filter: "blur(6px)",
+              y: 18,
+              filter: "blur(5px)",
             }}
             animate={
               isLoaded
@@ -772,13 +766,13 @@ const Hero = ({ isLoaded = false }) => {
                   }
                 : {
                     opacity: 0,
-                    y: 20,
-                    filter: "blur(6px)",
+                    y: 18,
+                    filter: "blur(5px)",
                   }
             }
             transition={{
-              duration: 0.8,
-              delay: 0.62,
+              duration: 0.75,
+              delay: 0.58,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="
@@ -792,78 +786,12 @@ const Hero = ({ isLoaded = false }) => {
               sm:leading-7
             "
           >
-            I build responsive web experiences that bring thoughtful design
-            and practical functionality together, from polished frontend
-            applications to full-stack web projects.
+            I build responsive web applications with polished interfaces and
+            real functionality, backed by hands-on experience across frontend
+            development and full-stack MERN projects.
           </motion.p>
 
           {/* CTA */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={
-              isLoaded
-                ? {
-                    opacity: 1,
-                    y: 0,
-                  }
-                : {
-                    opacity: 0,
-                    y: 20,
-                  }
-            }
-            transition={{
-              duration: 0.75,
-              delay: 0.78,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="
-              mt-8
-              flex
-              flex-col
-              items-start
-              gap-3
-              sm:flex-row
-              sm:items-center
-              sm:gap-4
-            "
-          >
-            <Button
-              href="/#projects"
-              size="lg"
-              showArrow
-            >
-              View selected work
-            </Button>
-
-            <Button
-              href="/#contact"
-              variant="ghost"
-              size="lg"
-              showArrow={false}
-              className="group"
-            >
-              <span className="inline-flex items-center gap-2">
-                Let's talk
-
-                <ArrowUpRight
-                  size={16}
-                  strokeWidth={2}
-                  className="
-                    transition-transform
-                    duration-normal
-                    ease-out-expo
-                    group-hover:translate-x-0.5
-                    group-hover:-translate-y-0.5
-                  "
-                />
-              </span>
-            </Button>
-          </motion.div>
-
-          {/* Social Links */}
           <motion.div
             initial={{
               opacity: 0,
@@ -882,7 +810,73 @@ const Hero = ({ isLoaded = false }) => {
             }
             transition={{
               duration: 0.7,
-              delay: 0.94,
+              delay: 0.74,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="
+              mt-8
+              flex
+              flex-col
+              items-start
+              gap-3
+              sm:flex-row
+              sm:items-center
+              sm:gap-4
+            "
+          >
+            <Button
+              href="/#projects"
+              size="lg"
+              showArrow
+            >
+              View my work
+            </Button>
+
+            <Button
+              href="/#contact"
+              variant="ghost"
+              size="lg"
+              showArrow={false}
+              className="group"
+            >
+              <span className="inline-flex items-center gap-2">
+                Let's talk
+
+                <ArrowUpRight
+                  size={16}
+                  strokeWidth={2}
+                  className="
+                    transition-transform
+                    duration-200
+                    ease-out
+                    group-hover:translate-x-0.5
+                    group-hover:-translate-y-0.5
+                  "
+                />
+              </span>
+            </Button>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 16,
+            }}
+            animate={
+              isLoaded
+                ? {
+                    opacity: 1,
+                    y: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 16,
+                  }
+            }
+            transition={{
+              duration: 0.65,
+              delay: 0.9,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="
@@ -910,8 +904,8 @@ const Hero = ({ isLoaded = false }) => {
                 aria-label={social.label}
                 initial={{
                   opacity: 0,
-                  y: 12,
-                  scale: 0.88,
+                  y: 10,
+                  scale: 0.9,
                 }}
                 animate={
                   isLoaded
@@ -922,21 +916,25 @@ const Hero = ({ isLoaded = false }) => {
                       }
                     : {
                         opacity: 0,
-                        y: 12,
-                        scale: 0.88,
+                        y: 10,
+                        scale: 0.9,
                       }
                 }
                 transition={{
-                  duration: 0.5,
-                  delay: 1.02 + index * 0.08,
+                  duration: 0.4,
+                  delay: 0.98 + index * 0.06,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 whileHover={{
-                  y: -4,
-                  scale: 1.06,
+                  y: -3,
+                  scale: 1.04,
+                  transition: {
+                    duration: 0.16,
+                    ease: "easeOut",
+                  },
                 }}
                 whileTap={{
-                  scale: 0.92,
+                  scale: 0.94,
                 }}
                 className="
                   group
@@ -946,18 +944,16 @@ const Hero = ({ isLoaded = false }) => {
                   w-11
                   items-center
                   justify-center
-                  overflow-hidden
                   rounded-full
                   border
                   border-border
-                  bg-surface/55
+                  bg-transparent
                   text-text-muted
-                  backdrop-blur-sm
-                  transition-colors
-                  duration-normal
-                  hover:border-border-hover
-                  hover:bg-surface-hover
-                  hover:text-text
+                  transition-[border-color,box-shadow]
+                  duration-150
+                  ease-out
+                  hover:border-text-secondary
+                  hover:shadow-[0_0_18px_rgba(255,255,255,0.06)]
                   focus-visible:outline-2
                   focus-visible:outline-accent
                   focus-visible:outline-offset-4
@@ -965,31 +961,8 @@ const Hero = ({ isLoaded = false }) => {
                   sm:w-12
                 "
               >
-                {/* Hover glow */}
                 <motion.span
                   aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    rounded-full
-                    bg-accent/[0.08]
-                  "
-                  initial={{
-                    opacity: 0,
-                    scale: 0.7,
-                  }}
-                  whileHover={{
-                    opacity: 1,
-                    scale: 1,
-                  }}
-                  transition={{
-                    duration: 0.25,
-                  }}
-                />
-
-                {/* Icon */}
-                <motion.span
                   className="
                     relative
                     z-10
@@ -998,23 +971,30 @@ const Hero = ({ isLoaded = false }) => {
                     justify-center
                   "
                   whileHover={{
+                    scale: 1.1,
                     rotate:
                       index === 0
-                        ? -7
+                        ? -5
                         : index === 1
-                        ? 5
-                        : -5,
-                    scale: 1.08,
+                        ? 4
+                        : -4,
                   }}
                   transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 18,
+                    duration: 0.14,
+                    ease: "easeOut",
                   }}
                 >
                   <i
                     aria-hidden="true"
-                    className={`${social.icon} text-[15px] sm:text-[16px]`}
+                    className={`
+                      ${social.icon}
+                      text-[15px]
+                      transition-colors
+                      duration-150
+                      ease-out
+                      group-hover:text-text
+                      sm:text-[16px]
+                    `}
                   />
                 </motion.span>
               </motion.a>
