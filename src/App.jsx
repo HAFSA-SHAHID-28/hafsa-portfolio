@@ -4,6 +4,7 @@ import Hero from "./components/hero/Hero";
 import LoadingScreen from "./components/loading/LoadingScreen";
 import PageShell from "./components/layout/PageShell";
 import Navbar from "./components/navigation/Navbar";
+import About from "./components/about/About";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +21,7 @@ function App() {
 
       <main>
         <Hero isLoaded={!isLoading} />
+        <About />
       </main>
     </PageShell>
   );
