@@ -214,7 +214,7 @@ const About = () => {
                 text-text
               "
             >
-              I’m Hafsa — a CS student
+              I’m Hafsa, a CS student
               <span className="text-text-muted">
                 {" "}
                 building my way into software engineering.
@@ -257,7 +257,7 @@ const About = () => {
             >
               I started out in Biology before making the switch to
               Computer Science. Since then, I’ve been learning software
-              mostly by building — starting with the fundamentals and
+              mostly by building, starting with the fundamentals and
               gradually moving toward complete web applications.
             </p>
 
