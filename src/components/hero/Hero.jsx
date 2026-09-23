@@ -710,7 +710,7 @@ const Hero = ({ isLoaded = false }) => {
             className="
               max-w-3xl
               font-display
-              text-[clamp(2.7rem,5.2vw,5rem)]
+              text-[clamp(2.25rem,4.2vw,4.25rem)]
               font-bold
               leading-[0.96]
               tracking-[-0.055em]

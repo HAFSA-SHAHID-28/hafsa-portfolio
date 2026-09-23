@@ -130,155 +130,135 @@ const About = () => {
             INTRO
         ───────────────────────────── */}
 
-        <div
-          className="
-            grid
-            gap-10
-            lg:grid-cols-[1.05fr_0.95fr]
-            lg:items-end
-            lg:gap-20
-          "
-        >
-          {/* Personal heading */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 28,
-              filter: "blur(8px)",
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              filter: "blur(0px)",
-            }}
-            viewport={{
-              once: true,
-              amount: 0.25,
-            }}
-            transition={{
-              duration: 0.85,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-          >
-            <div
-              className="
-                mb-5
-                flex
-                items-center
-                gap-3
-              "
-            >
-              <motion.span
-                initial={{
-                  width: 0,
-                }}
-                whileInView={{
-                  width: 30,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.15,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="
-                  block
-                  h-px
-                  bg-accent
-                "
-              />
+<motion.div
+  initial={{
+    opacity: 0,
+    y: 28,
+    filter: "blur(8px)",
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+  }}
+  viewport={{
+    once: true,
+    amount: 0.25,
+  }}
+  transition={{
+    duration: 0.85,
+    ease: [0.16, 1, 0.3, 1],
+  }}
+>
+  {/* Eyebrow */}
+  <div className="mb-5 flex items-center gap-3">
+    <motion.span
+      initial={{
+        width: 0,
+      }}
+      whileInView={{
+        width: 34,
+      }}
+      viewport={{
+        once: true,
+      }}
+      transition={{
+        duration: 0.6,
+        delay: 0.1,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className="block h-px bg-accent"
+    />
 
-              <span
-                className="
-                  font-mono
-                  text-[10px]
-                  uppercase
-                  tracking-[0.2em]
-                  text-text-muted
-                "
-              >
-                About me
-              </span>
-            </div>
+    <span
+      className="
+        font-mono
+        text-[10px]
+        uppercase
+        tracking-[0.22em]
+        text-text-muted
+      "
+    >
+      About me
+    </span>
+  </div>
 
-            <h2
-              className="
-                max-w-3xl
-                font-display
-                text-[clamp(2rem,3.7vw,3.5rem)]
-                font-medium
-                leading-[1.05]
-                tracking-[-0.045em]
-                text-text
-              "
-            >
-              I’m Hafsa, a CS student
-              <span className="text-text-muted">
-                {" "}
-                building my way into software engineering.
-              </span>
-            </h2>
-          </motion.div>
+  {/* Main heading */}
+  <h2
+    className="
+      max-w-4xl
+      font-display
+      text-[clamp(2.25rem,4.2vw,4.25rem)]
+      font-medium
+      leading-[0.95]
+      tracking-[-0.055em]
+      text-text
+    "
+  >
+    I’m Hafsa, a CS student
+    <span className="block text-text-muted">
+      building my way into software engineering.
+    </span>
+  </h2>
 
-          {/* Personal story */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 22,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.25,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.12,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="
-              max-w-xl
-              lg:ml-auto
-            "
-          >
-            <p
-              className="
-                text-sm
-                leading-7
-                text-text-secondary
-                sm:text-base
-                sm:leading-8
-              "
-            >
-              I started out in Biology before making the switch to
-              Computer Science. Since then, I’ve been learning software
-              mostly by building, starting with the fundamentals and
-              gradually moving toward complete web applications.
-            </p>
+  {/* Personal story BELOW heading */}
+  <motion.div
+    initial={{
+      opacity: 0,
+      y: 15,
+    }}
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+    viewport={{
+      once: true,
+      amount: 0.25,
+    }}
+    transition={{
+      duration: 0.7,
+      delay: 0.16,
+      ease: [0.16, 1, 0.3, 1],
+    }}
+    className="
+      mt-8
+      max-w-2xl
+      sm:mt-9
+    "
+  >
+    <p
+      className="
+        text-sm
+        leading-7
+        text-text-secondary
+        sm:text-base
+        sm:leading-8
+      "
+    >
+      I started out in Biology before making the switch to
+      Computer Science. Since then, I’ve been learning software
+      mostly by building, starting with the fundamentals and
+      gradually moving toward complete web applications.
+    </p>
 
-            <p
-              className="
-                mt-5
-                text-sm
-                leading-7
-                text-text-secondary
-                sm:text-base
-                sm:leading-8
-              "
-            >
-              I enjoy understanding how the pieces of an application
-              fit together rather than learning technologies in
-              isolation. That mindset has shaped how I approach
-              projects, internships, debugging, and new technical
-              concepts.
-            </p>
-          </motion.div>
-        </div>
+    <p
+      className="
+        mt-5
+        text-sm
+        leading-7
+        text-text-secondary
+        sm:text-base
+        sm:leading-8
+      "
+    >
+      I enjoy understanding how the pieces of an application
+      fit together rather than learning technologies in
+      isolation. That mindset has shaped how I approach
+      projects, internships, debugging, and new technical
+      concepts.
+    </p>
+  </motion.div>
+</motion.div>
 
         {/* ─────────────────────────────
             DIVIDER
