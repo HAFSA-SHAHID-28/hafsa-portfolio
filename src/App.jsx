@@ -6,6 +6,7 @@ import PageShell from "./components/layout/PageShell";
 import Navbar from "./components/navigation/Navbar";
 import About from "./components/about/About";
 import Skills from "./components/skills/Skills";
+import Projects from "./components/projects/Projects";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,6 +25,7 @@ function App() {
         <Hero isLoaded={!isLoading} />
         <About />
         <Skills/>
+        <Projects />
       </main>
     </PageShell>
   );

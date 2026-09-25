@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   ArrowUpRight,
   Braces,
@@ -14,7 +13,7 @@ import {
   Wrench,
   Zap,
 } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 
 import Container from "../layout/Container";
 import Section from "../layout/Section";
@@ -23,175 +22,76 @@ import Section from "../layout/Section";
    DATA
 ───────────────────────────────── */
 
-const SKILL_GROUPS = {
-  frontend: {
-    label: "Frontend",
+const SKILL_GROUPS = [
+  {
     index: "01",
+    label: "Frontend",
     icon: Monitor,
     description:
-      "The area where most of my development work currently happens.",
+      "Building responsive interfaces and interactive web applications.",
     skills: [
-      {
-        name: "HTML",
-        detail: "Semantic markup & structure",
-        icon: Globe,
-      },
-      {
-        name: "CSS",
-        detail: "Layouts, styling & responsive interfaces",
-        icon: Layers3,
-      },
-      {
-        name: "JavaScript",
-        detail: "Application logic & browser APIs",
-        icon: Braces,
-      },
-      {
-        name: "TypeScript",
-        detail: "Typed JavaScript development",
-        icon: Terminal,
-      },
-      {
-        name: "React",
-        detail: "Component-driven applications",
-        icon: Code2,
-      },
-      {
-        name: "Vite",
-        detail: "Modern frontend tooling",
-        icon: Zap,
-      },
-      {
-        name: "Tailwind CSS",
-        detail: "Utility-first interface styling",
-        icon: Wrench,
-      },
-      {
-        name: "Bootstrap",
-        detail: "Responsive UI development",
-        icon: Layers3,
-      },
+      { name: "React", icon: Code2 },
+      { name: "JavaScript", icon: Braces },
+      { name: "HTML", icon: Globe },
+      { name: "CSS", icon: Layers3 },
+      { name: "TypeScript", icon: Terminal },
+      { name: "Vite", icon: Zap },
+      { name: "Tailwind CSS", icon: Wrench },
+      { name: "Bootstrap", icon: Layers3 },
     ],
   },
 
-  backend: {
-    label: "Backend",
+  {
     index: "02",
+    label: "Backend",
     icon: Server,
     description:
-      "Growing deeper into the systems behind the interfaces I build.",
+      "Developing the systems and APIs behind the interfaces I build.",
     skills: [
-      {
-        name: "Node.js",
-        detail: "Server-side JavaScript",
-        icon: Server,
-      },
-      {
-        name: "Express.js",
-        detail: "Routing & REST APIs",
-        icon: Braces,
-      },
-      {
-        name: "MongoDB",
-        detail: "Document-based data storage",
-        icon: Database,
-      },
-      {
-        name: "Firebase",
-        detail: "Backend services & application data",
-        icon: Cloud,
-      },
-      {
-        name: "Postman",
-        detail: "API development & testing",
-        icon: Terminal,
-      },
+      { name: "Node.js", icon: Server },
+      { name: "Express.js", icon: Braces },
+      { name: "MongoDB", icon: Database },
+      { name: "Firebase", icon: Cloud },
+      { name: "Postman", icon: Terminal },
     ],
   },
 
-  tools: {
-    label: "Tools & Workflow",
+  {
     index: "03",
+    label: "Tools & Workflow",
     icon: Wrench,
     description:
-      "Tools I use to build, version, test, deploy and maintain projects.",
+      "Tools I use to manage code, integrate services and deploy projects.",
     skills: [
-      {
-        name: "Git",
-        detail: "Version control",
-        icon: GitBranch,
-      },
-      {
-        name: "GitHub",
-        detail: "Repositories & collaboration",
-        icon: GitBranch,
-      },
-      {
-        name: "Vercel",
-        detail: "Web deployment",
-        icon: Zap,
-      },
-      {
-        name: "Netlify",
-        detail: "Web deployment",
-        icon: Globe,
-      },
-      {
-        name: "Cloudinary",
-        detail: "Media storage & delivery",
-        icon: Cloud,
-      },
-      {
-        name: "EmailJS",
-        detail: "Client-side email integration",
-        icon: Terminal,
-      },
+      { name: "Git", icon: GitBranch },
+      { name: "GitHub", icon: GitBranch },
+      { name: "Vercel", icon: Zap },
+      { name: "Netlify", icon: Globe },
+      { name: "Cloudinary", icon: Cloud },
+      { name: "EmailJS", icon: Terminal },
     ],
   },
 
-  motion: {
-    label: "Motion & Interaction",
+  {
     index: "04",
+    label: "Motion & Interaction",
     icon: Zap,
     description:
-      "Technologies I use to make interfaces feel more responsive and alive.",
+      "Creating responsive interactions, transitions and animated interfaces.",
     skills: [
-      {
-        name: "Motion",
-        detail: "React animation & interaction",
-        icon: Zap,
-      },
-      {
-        name: "GSAP",
-        detail: "Advanced interface animation",
-        icon: Zap,
-      },
-      {
-        name: "Motion Design",
-        detail: "Interaction, transitions & visual feedback",
-        icon: Layers3,
-      },
-      {
-        name: "Responsive Design",
-        detail: "Consistent experiences across screen sizes",
-        icon: Monitor,
-      },
+      { name: "Motion", icon: Zap },
+      { name: "GSAP", icon: Zap },
+      { name: "Responsive Design", icon: Monitor },
+      { name: "Motion Design", icon: Layers3 },
     ],
   },
-};
-
-const GROUP_KEYS = Object.keys(SKILL_GROUPS);
+];
 
 /* ─────────────────────────────────
    MAIN
 ───────────────────────────────── */
 
 const Skills = () => {
-  const [activeGroup, setActiveGroup] = useState("frontend");
-
-  const current = SKILL_GROUPS[activeGroup];
-  const CurrentIcon = current.icon;
-
   return (
     <Section
       id="skills"
@@ -203,7 +103,10 @@ const Skills = () => {
         lg:py-36
       "
     >
-      {/* Ambient background */}
+      {/* ─────────────────────────
+          AMBIENT BACKGROUND
+      ───────────────────────── */}
+
       <div
         aria-hidden="true"
         className="
@@ -232,10 +135,10 @@ const Skills = () => {
           }}
           className="
             absolute
-            left-[25%]
+            left-[18%]
             top-[8%]
-            h-[520px]
-            w-[520px]
+            h-[560px]
+            w-[560px]
             rounded-full
             bg-accent/[0.025]
             blur-[150px]
@@ -244,24 +147,37 @@ const Skills = () => {
 
         <motion.div
           animate={{
-            x: [0, 18, 0],
-            y: [0, -15, 0],
+            x: [0, 22, 0],
+            y: [0, -18, 0],
           }}
           transition={{
-            duration: 12,
+            duration: 14,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           className="
             absolute
             -right-[180px]
-            bottom-[12%]
-            h-[360px]
-            w-[360px]
+            bottom-[8%]
+            h-[420px]
+            w-[420px]
             rounded-full
             border
             border-accent/[0.025]
             blur-[1px]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            inset-x-0
+            top-[42%]
+            h-px
+            bg-gradient-to-r
+            from-transparent
+            via-border/[0.35]
+            to-transparent
           "
         />
       </div>
@@ -292,6 +208,7 @@ const Skills = () => {
           }}
         >
           {/* Eyebrow */}
+
           <div className="flex items-center gap-3">
             <motion.span
               initial={{
@@ -325,26 +242,27 @@ const Skills = () => {
           </div>
 
           {/* Main heading */}
-         <h2
-  className="
-    mt-6
-    max-w-4xl
-    font-display
-    text-[clamp(2.25rem,4.2vw,4.25rem)]
-    font-medium
-    leading-[0.95]
-    tracking-[-0.055em]
-    text-text
-  "
->
-  Technologies I use
-  <span className="block text-text-muted">
-    to turn ideas into interfaces.
-  </span>
-</h2>
-          
 
-          {/* Paragraph BELOW heading */}
+          <h2
+            className="
+              mt-6
+              max-w-4xl
+              font-display
+              text-[clamp(2.25rem,4.2vw,4.25rem)]
+              font-medium
+              leading-[0.95]
+              tracking-[-0.055em]
+              text-text
+            "
+          >
+            Technologies I use
+            <span className="block text-text-muted">
+              to build and ship web applications.
+            </span>
+          </h2>
+
+          {/* Paragraph */}
+
           <motion.div
             initial={{
               opacity: 0,
@@ -385,7 +303,10 @@ const Skills = () => {
           </motion.div>
         </motion.header>
 
-        {/* Header divider */}
+        {/* ─────────────────────────
+            DIVIDER
+        ───────────────────────── */}
+
         <motion.div
           initial={{
             scaleX: 0,
@@ -418,242 +339,43 @@ const Skills = () => {
         />
 
         {/* ─────────────────────────
-            SKILLS AREA
+            SKILL CARDS
         ───────────────────────── */}
 
         <div
           className="
-            mt-8
-            lg:mt-10
+            mt-10
+            grid
+            grid-cols-1
+            gap-4
+            sm:mt-12
+            sm:grid-cols-2
+            sm:gap-5
+            lg:mt-14
+            lg:gap-6
           "
         >
-          <div
-            className="
-              grid
-              lg:grid-cols-[240px_minmax(0,1fr)]
-              xl:grid-cols-[270px_minmax(0,1fr)]
-            "
-          >
-            {/* CATEGORY NAV */}
-
-            <motion.aside
-              initial={{
-                opacity: 0,
-                x: -18,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.2,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: 0.12,
-              }}
-              className="
-                border-b
-                border-border
-                py-6
-                lg:border-b-0
-                lg:border-r
-                lg:py-8
-                lg:pr-8
-                xl:pr-10
-              "
-            >
-              <div
-                className="
-                  mb-5
-                  flex
-                  items-center
-                  justify-between
-                  lg:mb-7
-                "
-              >
-                <span
-                  className="
-                    font-mono
-                    text-[9px]
-                    uppercase
-                    tracking-[0.2em]
-                    text-text-muted
-                  "
-                >
-                  Categories
-                </span>
-
-                <span
-                  className="
-                    font-mono
-                    text-[9px]
-                    text-text-muted/45
-                  "
-                >
-                  {String(GROUP_KEYS.length).padStart(2, "0")}
-                </span>
-              </div>
-
-              <nav
-                aria-label="Skill categories"
-                className="
-                  grid
-                  grid-cols-2
-                  gap-x-4
-                  sm:grid-cols-4
-                  lg:block
-                "
-              >
-                {GROUP_KEYS.map((key) => (
-                  <CategoryItem
-                    key={key}
-                    item={SKILL_GROUPS[key]}
-                    active={activeGroup === key}
-                    onClick={() => setActiveGroup(key)}
-                  />
-                ))}
-              </nav>
-            </motion.aside>
-
-            {/* SKILL CONTENT */}
-
-            <div
-              className="
-                min-w-0
-                lg:pl-8
-                xl:pl-12
-              "
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeGroup}
-                  initial={{
-                    opacity: 0,
-                    y: 12,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: -12,
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    ease: "easeOut",
-                  }}
-                >
-                  {/* Group header */}
-
-                  <div
-                    className="
-                      flex
-                      flex-col
-                      gap-5
-                      border-b
-                      border-border
-                      py-7
-                      sm:flex-row
-                      sm:items-center
-                      sm:justify-between
-                      lg:py-8
-                    "
-                  >
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="
-                          flex
-                          h-10
-                          w-10
-                          shrink-0
-                          items-center
-                          justify-center
-                          rounded-full
-                          border
-                          border-border
-                          bg-surface/40
-                          text-text-muted
-                        "
-                      >
-                        <CurrentIcon
-                          size={16}
-                          strokeWidth={1.6}
-                        />
-                      </div>
-
-                      <div>
-                        <div className="flex items-center gap-2.5">
-                          <span
-                            className="
-                              font-mono
-                              text-[9px]
-                              tracking-[0.16em]
-                              text-accent
-                            "
-                          >
-                            {current.index}
-                          </span>
-
-                          <span
-                            className="
-                              font-display
-                              text-base
-                              font-medium
-                              tracking-[-0.02em]
-                              text-text
-                              sm:text-lg
-                            "
-                          >
-                            {current.label}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <p
-                      className="
-                        max-w-lg
-                        text-xs
-                        leading-6
-                        text-text-muted
-                        sm:text-right
-                        sm:text-sm
-                      "
-                    >
-                      {current.description}
-                    </p>
-                  </div>
-
-                  {/* Skill rows */}
-
-                  <div>
-                    {current.skills.map((skill, index) => (
-                      <SkillRow
-                        key={skill.name}
-                        skill={skill}
-                        index={index}
-                      />
-                    ))}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+          {SKILL_GROUPS.map((group, index) => (
+            <SkillCard
+              key={group.label}
+              group={group}
+              index={index}
+            />
+          ))}
         </div>
 
         {/* ─────────────────────────
-            FOOTER SIGNAL
+            BOTTOM SIGNAL
         ───────────────────────── */}
 
         <motion.div
           initial={{
             opacity: 0,
+            y: 12,
           }}
           whileInView={{
             opacity: 1,
+            y: 0,
           }}
           viewport={{
             once: true,
@@ -661,13 +383,16 @@ const Skills = () => {
           }}
           transition={{
             duration: 0.7,
-            delay: 0.1,
+            delay: 0.15,
           }}
           className="
             mt-10
             flex
             flex-col
             gap-3
+            border-t
+            border-border
+            pt-6
             sm:flex-row
             sm:items-center
             sm:justify-between
@@ -682,14 +407,16 @@ const Skills = () => {
               text-text-muted
             "
           >
-            Current focus
+            Current direction
           </span>
 
           <div
             className="
               flex
+              flex-wrap
               items-center
-              gap-2
+              gap-x-2
+              gap-y-1
               font-mono
               text-[9px]
               uppercase
@@ -724,161 +451,77 @@ const Skills = () => {
 };
 
 /* ─────────────────────────────────
-   CATEGORY ITEM
+   SKILL CARD
 ───────────────────────────────── */
 
-const CategoryItem = ({
-  item,
-  active,
-  onClick,
-}) => {
-  const Icon = item.icon;
+const SkillCard = ({ group, index }) => {
+  const Icon = group.icon;
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
+    <motion.article
+      initial={{
+        opacity: 0,
+        y: 32,
+        filter: "blur(6px)",
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+      }}
+      viewport={{
+        once: true,
+        amount: 0.18,
+      }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.08,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      whileHover={{
+        y: -5,
+      }}
       className="
         group
         relative
-        flex
-        w-full
-        items-center
-        gap-3
-        py-3
-        text-left
-        lg:py-3.5
+        overflow-hidden
+        rounded-2xl
+        border
+        border-border
+        bg-surface/55
+        p-6
+        transition-colors
+        duration-500
+        hover:border-accent/30
+        hover:bg-surface
+        sm:p-7
+        lg:p-8
       "
     >
-      <motion.span
-        animate={{
-          scaleY: active ? 1 : 0,
-          opacity: active ? 1 : 0,
-        }}
-        transition={{
-          duration: 0.25,
-        }}
+      {/* Hover atmosphere */}
+
+      <div
+        aria-hidden="true"
         className="
+          pointer-events-none
           absolute
-          -left-[1px]
-          top-1/2
-          hidden
-          h-6
-          w-px
-          -translate-y-1/2
-          origin-center
-          bg-accent
-          lg:block
+          -right-24
+          -top-24
+          h-56
+          w-56
+          rounded-full
+          bg-accent/[0.055]
+          opacity-0
+          blur-[70px]
+          transition-opacity
+          duration-700
+          group-hover:opacity-100
         "
       />
 
-      <span
-        className={`
-          flex
-          h-8
-          w-8
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          border
-          transition-all
-          duration-300
-          ${
-            active
-              ? "border-accent/40 bg-accent/[0.08] text-text"
-              : "border-transparent text-text-muted group-hover:border-border group-hover:text-text"
-          }
-        `}
-      >
-        <Icon
-          size={14}
-          strokeWidth={1.7}
-        />
-      </span>
+      {/* Top accent line */}
 
-      <span
-        className={`
-          min-w-0
-          font-display
-          text-sm
-          tracking-[-0.01em]
-          transition-all
-          duration-300
-          ${
-            active
-              ? "translate-x-1 text-text"
-              : "text-text-muted group-hover:translate-x-1 group-hover:text-text"
-          }
-        `}
-      >
-        {item.label}
-      </span>
-
-      <span
-        className={`
-          ml-auto
-          hidden
-          font-mono
-          text-[8px]
-          transition-opacity
-          duration-300
-          lg:block
-          ${
-            active
-              ? "text-accent opacity-100"
-              : "text-text-muted opacity-0 group-hover:opacity-50"
-          }
-        `}
-      >
-        {item.index}
-      </span>
-    </button>
-  );
-};
-
-/* ─────────────────────────────────
-   SKILL ROW
-───────────────────────────────── */
-
-const SkillRow = ({
-  skill,
-  index,
-}) => {
-  const Icon = skill.icon;
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        x: 18,
-      }}
-      animate={{
-        opacity: 1,
-        x: 0,
-      }}
-      transition={{
-        duration: 0.45,
-        delay: index * 0.055,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="
-        group
-        relative
-        flex
-        min-h-[76px]
-        items-center
-        gap-4
-        border-b
-        border-border
-        sm:min-h-[86px]
-        sm:gap-6
-      "
-    >
-      {/* Hover line */}
-
-      <motion.span
-        aria-hidden="true"
+      <motion.div
         initial={{
           scaleX: 0,
         }}
@@ -886,7 +529,7 @@ const SkillRow = ({
           scaleX: 1,
         }}
         transition={{
-          duration: 0.35,
+          duration: 0.45,
           ease: [0.16, 1, 0.3, 1],
         }}
         style={{
@@ -894,8 +537,8 @@ const SkillRow = ({
         }}
         className="
           absolute
-          bottom-[-1px]
           left-0
+          top-0
           h-px
           w-full
           bg-gradient-to-r
@@ -905,119 +548,259 @@ const SkillRow = ({
         "
       />
 
-      {/* Number */}
+      {/* Header */}
 
-      <span
+      <div
         className="
-          hidden
-          w-6
-          shrink-0
-          font-mono
-          text-[9px]
-          tracking-[0.1em]
-          text-text-muted/40
-          sm:block
+          relative
+          flex
+          items-start
+          justify-between
+          gap-5
         "
       >
-        {String(index + 1).padStart(2, "0")}
-      </span>
+        <div className="flex items-center gap-4">
+          {/* Category icon */}
 
-      {/* Icon */}
+          <motion.div
+            whileHover={{
+              scale: 1.06,
+              rotate: -4,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 350,
+              damping: 20,
+            }}
+            className="
+              flex
+              h-11
+              w-11
+              shrink-0
+              items-center
+              justify-center
+              rounded-xl
+              border
+              border-border
+              bg-bg-soft/80
+              text-text-muted
+              transition-all
+              duration-300
+              group-hover:border-accent/30
+              group-hover:bg-accent/[0.06]
+              group-hover:text-text
+            "
+          >
+            <Icon
+              size={18}
+              strokeWidth={1.6}
+            />
+          </motion.div>
 
-      <motion.div
-        whileHover={{
-          x: 3,
-          scale: 1.08,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 400,
-          damping: 22,
-        }}
+          <div>
+            <span
+              className="
+                block
+                font-mono
+                text-[9px]
+                tracking-[0.16em]
+                text-accent
+              "
+            >
+              {group.index}
+            </span>
+
+            <h3
+              className="
+                mt-1
+                font-display
+                text-xl
+                font-medium
+                tracking-[-0.035em]
+                text-text
+                sm:text-[22px]
+              "
+            >
+              {group.label}
+            </h3>
+          </div>
+        </div>
+
+        {/* Corner arrow */}
+
+        <motion.div
+          initial={{
+            opacity: 0.35,
+            x: 0,
+            y: 0,
+          }}
+          whileHover={{
+            opacity: 1,
+            x: 3,
+            y: -3,
+          }}
+          className="
+            text-text-muted
+            transition-colors
+            duration-300
+            group-hover:text-accent
+          "
+        >
+          <ArrowUpRight
+            size={18}
+            strokeWidth={1.5}
+          />
+        </motion.div>
+      </div>
+
+      {/* Description */}
+
+      <p
         className="
+          relative
+          mt-6
+          max-w-md
+          text-sm
+          leading-6
+          text-text-muted
+        "
+      >
+        {group.description}
+      </p>
+
+      {/* Skills */}
+
+      <div
+        className="
+          relative
+          mt-7
           flex
-          h-9
-          w-9
-          shrink-0
+          flex-wrap
+          gap-2.5
+          sm:gap-3
+        "
+      >
+        {group.skills.map((skill, skillIndex) => (
+          <SkillPill
+            key={skill.name}
+            skill={skill}
+            index={skillIndex}
+          />
+        ))}
+      </div>
+
+      {/* Footer */}
+
+      <div
+        className="
+          relative
+          mt-8
+          flex
           items-center
-          justify-center
-          rounded-lg
-          border
+          justify-between
+          border-t
           border-border
-          bg-surface/30
+          pt-5
+        "
+      >
+        <span
+          className="
+            font-mono
+            text-[9px]
+            uppercase
+            tracking-[0.16em]
+            text-text-muted
+          "
+        >
+          {String(group.skills.length).padStart(2, "0")}{" "}
+          technologies
+        </span>
+
+        <span
+          className="
+            font-mono
+            text-[9px]
+            uppercase
+            tracking-[0.16em]
+            text-text-muted
+            transition-colors
+            duration-300
+            group-hover:text-text
+          "
+        >
+          View stack
+        </span>
+      </div>
+    </motion.article>
+  );
+};
+
+/* ─────────────────────────────────
+   SKILL PILL
+───────────────────────────────── */
+
+const SkillPill = ({ skill, index }) => {
+  const Icon = skill.icon;
+
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 8,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: 0.4,
+        delay: index * 0.035,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className="
+        inline-flex
+        min-h-11
+        items-center
+        gap-2.5
+        rounded-xl
+        border
+        border-border
+        bg-bg-soft/70
+        px-4
+        py-2.5
+        text-sm
+        font-medium
+        text-text-secondary
+        transition-all
+        duration-300
+        hover:border-accent/30
+        hover:bg-accent/[0.06]
+        hover:text-text
+        sm:min-h-12
+        sm:px-4.5
+        sm:py-3
+        sm:text-[15px]
+      "
+    >
+      <Icon
+        size={16}
+        strokeWidth={1.6}
+        className="
+          shrink-0
           text-text-muted
           transition-colors
           duration-300
-          group-hover:border-accent/30
-          group-hover:bg-accent/[0.06]
-          group-hover:text-text
-          sm:h-10
-          sm:w-10
+          group-hover:text-accent
         "
-      >
-        <Icon
-          size={16}
-          strokeWidth={1.6}
-        />
-      </motion.div>
+      />
 
-      {/* Text */}
-
-      <div className="min-w-0 flex-1">
-        <h3
-          className="
-            font-display
-            text-base
-            font-medium
-            tracking-[-0.025em]
-            text-text
-            transition-transform
-            duration-300
-            group-hover:translate-x-1
-            sm:text-lg
-          "
-        >
-          {skill.name}
-        </h3>
-
-        <p
-          className="
-            mt-1
-            truncate
-            text-xs
-            text-text-muted
-            sm:text-sm
-          "
-        >
-          {skill.detail}
-        </p>
-      </div>
-
-      {/* Arrow */}
-
-      <motion.div
-        initial={{
-          opacity: 0,
-          x: -5,
-        }}
-        whileHover={{
-          opacity: 1,
-          x: 0,
-        }}
-        transition={{
-          duration: 0.2,
-        }}
-        className="
-          hidden
-          text-accent
-          sm:block
-        "
-      >
-        <ArrowUpRight
-          size={17}
-          strokeWidth={1.5}
-        />
-      </motion.div>
+      <span className="whitespace-nowrap">
+        {skill.name}
+      </span>
     </motion.div>
   );
 };
