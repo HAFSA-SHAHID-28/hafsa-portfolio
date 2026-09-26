@@ -4,6 +4,7 @@ const projects = [
     number: "01",
     title: "SupportFlow",
     type: "Full-stack web application",
+    image: "/project/verdantNoir.png",
     description:
       "A service management platform built around role-based workflows, ticket handling, real-time updates and integrated services.",
     capabilities: [
@@ -32,6 +33,7 @@ const projects = [
     number: "02",
     title: "Zenvyra",
     type: "Social web application",
+    image: "/project/zenvyra.png",
     description:
       "A social-network-style web application focused on feeds, profiles, posts, likes, comments and interactive user flows.",
     capabilities: [
@@ -48,8 +50,8 @@ const projects = [
     ],
     featured: false,
     visual: "zenvyra",
-    liveUrl: "",
-    githubUrl: "",
+    liveUrl: "https://zenvyra-socialplatform.netlify.app/",
+    githubUrl: "https://github.com/HAFSA-SHAHID-28/ArchTechnologies_Tasks/tree/ac275bb571ccda6ab0068953b6b45ef2c37ec2a8/ArchTechnonogies_Task4_SocialMediaPlatform",
   },
 
   {
@@ -57,6 +59,7 @@ const projects = [
     number: "03",
     title: "Velvorea",
     type: "Audio web application",
+    image: "/project/velvorae.png",
     description:
       "An interactive audio experience with local uploads, playlists, playback controls, search and browser-based audio functionality.",
     capabilities: [
@@ -73,8 +76,8 @@ const projects = [
     ],
     featured: false,
     visual: "velvorea",
-    liveUrl: "",
-    githubUrl: "",
+    liveUrl: "https://velvorea-audio-player.netlify.app/",
+    githubUrl: "https://github.com/HAFSA-SHAHID-28/ArchTechnologies_Tasks/tree/ac275bb571ccda6ab0068953b6b45ef2c37ec2a8/ArchTechnologies_Task3_AudioPlayer",
   },
 
   {
@@ -82,6 +85,7 @@ const projects = [
     number: "04",
     title: "NeuronSpark",
     type: "Interactive quiz application",
+    image: "/project/neuronSpark.png",
     description:
       "A responsive quiz experience built around timed questions, score tracking, completion states and visual interaction.",
     capabilities: [
@@ -97,8 +101,8 @@ const projects = [
     ],
     featured: false,
     visual: "neuronspark",
-    liveUrl: "",
-    githubUrl: "",
+    liveUrl: "https://neuron-spark.netlify.app/",
+    githubUrl: "https://github.com/HAFSA-SHAHID-28/NeuronSpark-Quiz-Application.git",
   },
 
   {
@@ -106,6 +110,7 @@ const projects = [
     number: "05",
     title: "Charity",
     type: "Responsive website",
+    image: "/project/charity.png",
     description:
       "A responsive multi-page website focused on clear information structure, polished interfaces and consistent experiences across screen sizes.",
     capabilities: [
@@ -122,8 +127,8 @@ const projects = [
     ],
     featured: false,
     visual: "charity",
-    liveUrl: "",
-    githubUrl: "",
+    liveUrl: "https://chariity-website.netlify.app/",
+    githubUrl: "https://github.com/HAFSA-SHAHID-28/charity-website.git",
   },
 ];
 
