@@ -7,6 +7,7 @@ import Navbar from "./components/navigation/Navbar";
 import About from "./components/about/About";
 import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
+import Experience from "./components/experience/Experience";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,6 +27,7 @@ function App() {
         <About />
         <Skills/>
         <Projects />
+        <Experience />
       </main>
     </PageShell>
   );

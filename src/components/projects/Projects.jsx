@@ -310,7 +310,8 @@ const Projects = () => {
           "
         >
           <a
-            href="/projects"
+            href="https://github.com/HAFSA-SHAHID-28/"
+            target="_blank"
             className="
               group
               inline-flex
