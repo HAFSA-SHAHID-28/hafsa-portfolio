@@ -312,6 +312,7 @@ const Projects = () => {
           <a
             href="https://github.com/HAFSA-SHAHID-28/"
             target="_blank"
+            rel="noreferrer"
             className="
               group
               inline-flex
