@@ -8,6 +8,9 @@ import About from "./components/about/About";
 import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
 import Experience from "./components/experience/Experience";
+import Education from "./components/education/Education";
+import Contact from "./components/contact/Contact";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +31,9 @@ function App() {
         <Skills/>
         <Projects />
         <Experience />
+        <Education />
+        <Contact />
+        <Footer />
       </main>
     </PageShell>
   );
