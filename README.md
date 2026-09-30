@@ -72,18 +72,6 @@ Clone the repository:
 git clone https://github.com/HAFSA-SHAHID-28/<repository-name>.git
 cd <repository-name>
 
-## ✦ Environment Variables
-
-The contact form uses EmailJS.
-
-Create a .env file in the project root:
-
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
-
-These values should remain private and should not be committed to Git.
-
 ## ✦ Deployment
 
 The portfolio is deployed on Vercel and connected to the GitHub repository for continuous deployment.
