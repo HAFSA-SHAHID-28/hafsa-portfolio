@@ -1,16 +1,103 @@
-# React + Vite
+# Hafsa Shahid — Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive personal portfolio built to showcase my work, technical skills, development experience, and projects as a **Frontend-focused MERN Stack Developer**.
 
-Currently, two official plugins are available:
+The portfolio focuses on polished interfaces, meaningful interactions, responsive design, and practical web development work.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✦ Live Portfolio
 
-## React Compiler
+**Live:** https://hafsashahid.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**GitHub:** https://github.com/HAFSA-SHAHID-28
 
-## Expanding the ESLint configuration
+**LinkedIn:** https://www.linkedin.com/in/hafsa-shahid-dev/
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✦ Built With
+
+- React
+- Vite
+- Tailwind CSS
+- JavaScript
+- Motion
+- Lucide React
+- Font Awesome
+- EmailJS
+- Vercel
+
+---
+
+## ✦ What's Inside
+
+- Responsive personal portfolio
+- Animated hero section
+- Selected project showcase
+- Interactive project cards
+- Technical skills section
+- Development experience timeline
+- Education timeline
+- Contact form with EmailJS
+- GitHub, LinkedIn and email integration
+- Responsive navigation
+- Loading screen and page transitions
+- Dark, developer-focused visual system
+- Mobile-first responsive behavior
+
+---
+
+## ✦ Featured Projects
+
+### SupportFlow
+A full-stack service management platform featuring authentication, role-based workflows, REST APIs, ticket management, real-time communication, AI integration, and multiple external services.
+
+### Zenvyra
+A social-network-style web application focused on feeds, profiles, posts, likes, comments, and interactive user flows.
+
+### Velvorea
+An interactive audio application with local uploads, playlists, playback controls, search, LocalStorage, and browser-based audio functionality.
+
+### NeuronSpark
+A responsive quiz application with timed questions, score tracking, completion states, and interactive UI.
+
+### Charity
+A responsive multi-page website focused on clear information structure and consistent interface design across screen sizes.
+
+---
+
+## ✦ Getting Started
+
+Clone the repository:
+
+git clone https://github.com/HAFSA-SHAHID-28/<repository-name>.git
+cd <repository-name>
+
+## ✦ Environment Variables
+
+The contact form uses EmailJS.
+
+Create a .env file in the project root:
+
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+
+These values should remain private and should not be committed to Git.
+
+## ✦ Deployment
+
+The portfolio is deployed on Vercel and connected to the GitHub repository for continuous deployment.
+
+Every new production-ready push can be deployed through the connected repository.
+
+## ✦ About
+
+I'm Hafsa Shahid, a Computer Science student building my way into software engineering.
+
+My current focus is frontend-focused MERN development, with growing experience in APIs, databases, authentication, integrations, and full-stack web applications.
+
+I enjoy learning by building and understanding how different parts of a system work together.
+
+## ✦ License
+
+This project is a personal portfolio and is not intended to be redistributed as a personal portfolio template.
